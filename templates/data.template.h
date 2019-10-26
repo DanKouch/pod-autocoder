@@ -19,7 +19,7 @@ int expFilterInt(int currVal, int prevVal, float weight);
 int initMetaData(void);
 int isEarlyInit(void);
 
-/**!!AUTOGENERATE HERE!!**/
+/**!!AUTO-GENERATE HERE!!**/
 
 extern data_t *data;
 #endif
