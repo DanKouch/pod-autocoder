@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<struct id="data" init="initData">
+<struct id="data" init="initData" comment="Top of the great hierarchy of our decending data tree.">
 	<field id="state" type="int"/>
-	<struct pointer="true" id="pressure" init="initPressureData">
+	<struct pointer="true" id="pressure" init="initPressureData" comment="Pressure information from the braking system">
 		<field id="primTank" type="double"/>
 		<field id="primLine" type="double"/>
 		<field id="primAct" type="double"/>
@@ -11,14 +11,14 @@
 		<field id="amb" type="double"/>
 		<field id="pv" type="double"/>
 	</struct>
-	<struct pointer="true" id="motion" init="initMotionData">
+	<struct pointer="true" id="motion" init="initMotionData" comment="Where all motion data goes. X-positive direction is assumed. All values should be assumed to be metric.">
 		<field id="pos" type="float"/>
 		<field id="vel" type="float"/>
 		<field id="accel" type="float"/>
 		<field id="retroCount" type="int"/>
 		<field id="missedRetro" type="int"/>
 	</struct>
-	<struct pointer="true" id="bms" init="initBmsData">
+	<struct pointer="true" id="bms" init="initBmsData" comment="Data colected about the battery system">
 		<field id="packCurrent" type="float"/>
 		<field id="packVoltage" type="float"/>
 		<field id="imdStatus" type="int"/>
@@ -41,7 +41,7 @@
 		<field id="maxCells" type="uint8_t"/>
 		<field id="numCells" type="uint8_t"/>
 	</struct>
-	<struct pointer="true" id="rms" init="initRmsData">
+	<struct pointer="true" id="rms" init="initRmsData" comment="Collection of all the RMS (motor controller) data">
 		<field id="igbtTemp" type="uint16_t"/>
 		<field id="gateDriverBoardTemp" type="uint16_t"/>
 		<field id="controlBoardTemp" type="uint16_t"/>
@@ -66,7 +66,7 @@
 		<field id="VSMCode" type="uint16_t"/>
 		<field id="keyMode" type="uint16_t"/>
 	</struct>
-	<struct pointer="true" id="flags" init="initFlagData">
+	<struct pointer="true" id="flags" init="initFlagData" comment="Where information about the flags is held.">
 		<field id="readyPump" type="int"/>
 		<field id="pumpDown" type="int"/>
 		<field id="readyCommand" type="int"/>
@@ -84,11 +84,11 @@
 		<field id="brakeSecRetr" type="bool"/>
 		<field id="clrMotionData" type="bool"/>
 	</struct>
-	<struct pointer="true" id="timers" init="initTimerData">
+	<struct pointer="true" id="timers" init="initTimerData" comment="For making sure that our run happens in a timely manner">
 		<field id="startTime" type="uint64_t"/>
 		<field id="oldRetro" type="uint64_t"/>
 		<field id="lastRetro" type="uint64_t"/>
-		<field id="lastRetros" type="uint64_t[]"/>
+		<field id="lastRetros" type="uint64_t[NUM_RETROS]"/>
 		<field id="crawlTimer" type="uint64_t"/>
 	</struct>
 </struct>
