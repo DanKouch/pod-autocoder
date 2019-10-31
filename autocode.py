@@ -10,7 +10,7 @@ def autocode(templateFilePath, outputFilePath, placeholderGeneratorTupleArray):
     # Load and prepare the template
     code = ""
 
-    with open("templates/" + templateFilePath, mode="rt") as templateFile:
+    with open(templateFilePath, mode="rt") as templateFile:
         for line in templateFile:
             code += line
     if code is "":
@@ -35,17 +35,11 @@ def autocode(templateFilePath, outputFilePath, placeholderGeneratorTupleArray):
 
         code = code.replace(placeholder, generatedCode)
 
-    # Make sure the output directory exists
-    try:
-        os.mkdir("output")
-    except:
-        pass
-
     # Write code to output
-    with open("output/" + outputFilePath, mode="w+") as out:
+    with open(outputFilePath, mode="w+") as out:
         out.write(code)
 
     print("Successfully auto-coded " + outputFilePath + ".")
 
-autocode("data.template.h", "data.h", [("!!AUTO-GENERATE HERE!!", generators.generateDataHeader)])
-autocode("TelemetryLoop.template.cpp", "TelemetryLoop.cpp", [("!!AUTO-GENERATE HERE!!", generators.generateBufferContents)])
+autocode("templates/data.template.h", "output/data.h", [("!!AUTO-GENERATE HERE!!", generators.generateDataHeader)])
+autocode("templates/TelemetryLoop.template.cpp", "output/TelemetryLoop.cpp", [("!!AUTO-GENERATE HERE!!", generators.generateBufferContents)])
